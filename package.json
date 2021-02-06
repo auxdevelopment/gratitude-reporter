@@ -1,0 +1,22 @@
+{
+  "name": "gratitude-reporter",
+  "version": "1.0.0",
+  "description": "Gratitude Reporter App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auxdevelopment/gratitude-reporter.git"
+  },
+  "author": "Benjamin Auinger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/auxdevelopment/gratitude-reporter/issues"
+  },
+  "homepage": "https://github.com/auxdevelopment/gratitude-reporter#readme",
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
+}
