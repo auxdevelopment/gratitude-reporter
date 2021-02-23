@@ -28,17 +28,33 @@ export class AppStorage {
     }
 
     public static addReport(report: Report): Promise<void> {
-        const stateString = localStorage.getItem(ROOT_KEY);
+        const stateValue = localStorage.getItem(ROOT_KEY);
 
-        if (!stateString) {
+        if (!stateValue) {
             return Promise.reject('state may not be null');
         }
 
-        const state: State = JSON.parse(stateString);
+        const state: State = JSON.parse(stateValue);
 
         state.reports.push(report);
         localStorage.setItem(ROOT_KEY, JSON.stringify(state));
 
         return Promise.resolve();
+    }
+
+    public static deleteReport(timestamp: number) {
+        const stateValue = localStorage.getItem(ROOT_KEY);
+
+        if (!stateValue) {
+            return Promise.reject('state may not be null');
+        }
+
+        const state: State = JSON.parse(stateValue);
+
+        const filteredReports = state.reports.filter(report => report.getTimestamp() !== timestamp);
+        state.reports = filteredReports;
+
+
+        localStorage.setItem(ROOT_KEY, JSON.stringify(state));
     }
 }
