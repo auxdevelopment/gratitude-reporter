@@ -25,6 +25,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - run: npm install
+      working-directory: gratitude-reporter-app
     - run: npm run build --if-present
+      working-directory: gratitude-reporter-app
     - run: npm run test:unit
+      working-directory: gratitude-reporter-app
