@@ -96,6 +96,6 @@ describe('AppStorage', () => {
     it('should load reports', async () => {
         const reports = await AppStorage.loadReports();
 
-        expect(reports.length).toEqual(0);
+        expect(reports.length).toEqual(1);
     });
 })
