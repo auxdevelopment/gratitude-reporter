@@ -1,8 +1,8 @@
 import { Report } from "./report";
 
-const ROOT_KEY = "gratitude-reporter";
+export const ROOT_KEY = "gratitude-reporter";
 
-interface State {
+export interface State {
     userId: string;
     reports: Array<Report>;
 }
