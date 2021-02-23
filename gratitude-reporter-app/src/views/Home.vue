@@ -1,19 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <text-field :content="'test'"></text-field>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import TextField from '@/components/TextField.vue';
+import { AppStorage } from '@/storage/app-storage';
 
 @Component({
   components: {
-    HelloWorld,
+    TextField
   }
 })
 export default class Home extends Vue {
+  data() {
+    return {
+      alreadyReported: Boolean
+    };
+  }
+
+  async mounted() {
+    console.log('Mounted!');
+
+    const reports = await AppStorage.loadReports();
+  }
 }
 </script>
