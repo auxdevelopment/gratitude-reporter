@@ -4,7 +4,10 @@ export const ROOT_KEY = "gratitude-reporter";
 
 export interface State {
     userId: string;
-    reports: Array<Report>;
+    reports: Array<{
+        content: string,
+        timestamp: number
+    }>;
 }
 
 export class AppStorage {
@@ -42,7 +45,7 @@ export class AppStorage {
         return Promise.resolve();
     }
 
-    public static deleteReport(timestamp: number) {
+    public static loadReports(): Promise<Array<Report>> {
         const stateValue = localStorage.getItem(ROOT_KEY);
 
         if (!stateValue) {
@@ -51,10 +54,30 @@ export class AppStorage {
 
         const state: State = JSON.parse(stateValue);
 
-        const filteredReports = state.reports.filter(report => report.getTimestamp() !== timestamp);
+        const reports = new Array<Report>();
+
+        state.reports.forEach(report => {
+            reports.push(new Report(report.content, report.timestamp));
+        })
+
+        return Promise.resolve(reports);
+    }
+
+    public static deleteReport(timestamp: number): Promise<void> {
+        const stateValue = localStorage.getItem(ROOT_KEY);
+
+        if (!stateValue) {
+            return Promise.reject('state may not be null');
+        }
+
+        const state: State = JSON.parse(stateValue);
+
+
+        const filteredReports = state.reports.filter(report => report.timestamp !== timestamp);
         state.reports = filteredReports;
 
-
         localStorage.setItem(ROOT_KEY, JSON.stringify(state));
+
+        return Promise.resolve();
     }
 }
