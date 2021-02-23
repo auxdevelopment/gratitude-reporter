@@ -33,8 +33,13 @@ describe('AppStorage', () => {
 
     it('should add a report', async () => {
         const reportContent = 'New Report';
-        const reportToAdd = new Report(reportContent);
-        reportToDeleteTimestamp = reportToAdd.getTimestamp();
+        const timestamp = Date.now();
+        const reportToAdd: Report = {
+            content: reportContent,
+            timestamp: timestamp
+        };
+
+        reportToDeleteTimestamp = timestamp;
 
         await AppStorage.addReport(reportToAdd);
 
@@ -47,8 +52,8 @@ describe('AppStorage', () => {
         expect(storedReport.timestamp).not.toBeNull();
         expect(storedReport.content).not.toBeNull();
 
-        expect(storedReport.timestamp).toEqual(reportToAdd.getTimestamp());
-        expect(storedReport.content).toEqual(reportToAdd.getContent());
+        expect(storedReport.timestamp).toEqual(reportToAdd.timestamp);
+        expect(storedReport.content).toEqual(reportToAdd.content);
     });
 
     it('should delete previously created report', async () => {

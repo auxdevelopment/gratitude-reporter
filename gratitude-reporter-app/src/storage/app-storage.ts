@@ -4,10 +4,7 @@ export const ROOT_KEY = "gratitude-reporter";
 
 export interface State {
     userId: string;
-    reports: Array<{
-        content: string,
-        timestamp: number
-    }>;
+    reports: Array<Report>;
 }
 
 export class AppStorage {
@@ -54,13 +51,7 @@ export class AppStorage {
 
         const state: State = JSON.parse(stateValue);
 
-        const reports = new Array<Report>();
-
-        state.reports.forEach(report => {
-            reports.push(new Report(report.content, report.timestamp));
-        })
-
-        return Promise.resolve(reports);
+        return Promise.resolve(state.reports);
     }
 
     public static deleteReport(timestamp: number): Promise<void> {
