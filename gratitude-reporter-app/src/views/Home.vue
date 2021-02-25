@@ -1,30 +1,48 @@
 <template>
   <div class="home">
-    <text-field :content="'test'"></text-field>
+    <report-editor v-if="!alreadyReported" :buttonText="'Report eingeben'" v-bind:content.sync="content" :submit="clicky"></report-editor>
+    <already-reported v-else></already-reported>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import TextField from '@/components/TextField.vue';
+import ReportEditor from '@/components/ReportEditor.vue';
+import AlreadyReported from '@/components/AlreadyReported.vue';
 import { AppStorage } from '@/storage/app-storage';
 
 @Component({
   components: {
-    TextField
+    ReportEditor, AlreadyReported
   }
 })
 export default class Home extends Vue {
   data() {
     return {
-      alreadyReported: Boolean
-    };
+      alreadyReported: Boolean,
+      content: 'Ein Report'
+    }
   }
 
-  async mounted() {
-    console.log('Mounted!');
-
+  async created() {
     const reports = await AppStorage.loadReports();
+
+    const reportFromToday = reports.find(report => {
+      const timestamp = new Date(report.timestamp);
+      const today = new Date(Date.now());
+      const reportedToday = timestamp.getFullYear() === today.getFullYear()
+        && timestamp.getMonth() === today.getMonth()
+        && timestamp.getDate() === today.getDate();
+
+      return reportedToday;
+    });
+
+    this.alreadyReported = !!reportFromToday;
   }
+
+  async clicky() {
+    console.log(this.content);
+  }
+
 }
 </script>
