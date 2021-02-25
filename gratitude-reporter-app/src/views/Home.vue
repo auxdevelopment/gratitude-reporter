@@ -4,7 +4,7 @@
       v-if="!alreadyReported"
       :buttonText="'Report eingeben'"
       v-bind:content.sync="content"
-      :submit="clicky"></report-editor>
+      :submit="submit"></report-editor>
     <already-reported v-else></already-reported>
   </div>
 </template>
@@ -14,6 +14,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import ReportEditor from '@/components/ReportEditor.vue';
 import AlreadyReported from '@/components/AlreadyReported.vue';
 import { AppStorage } from '@/storage/app-storage';
+import { Report } from '@/storage/report';
 
 @Component({
   components: {
@@ -44,8 +45,15 @@ export default class Home extends Vue {
     this.alreadyReported = !!reportFromToday;
   }
 
-  async clicky() {
-    console.log(this.content);
+  async submit() {
+    const timestamp = Date.now();
+    const report: Report = {
+      content: this.content,
+      timestamp: timestamp
+    };
+
+    await AppStorage.addReport(report);
+    this.alreadyReported = true;
   }
 
 }
