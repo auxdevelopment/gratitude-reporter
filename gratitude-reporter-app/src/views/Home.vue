@@ -6,6 +6,7 @@
       v-bind:content.sync="content"
       :submit="submit"></report-editor>
     <already-reported v-else></already-reported>
+
   </div>
 </template>
 
