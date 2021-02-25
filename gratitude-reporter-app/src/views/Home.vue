@@ -19,15 +19,11 @@ import { Report } from '@/storage/report';
 @Component({
   components: {
     ReportEditor, AlreadyReported
-  }
+  },
 })
 export default class Home extends Vue {
-  data() {
-    return {
-      alreadyReported: Boolean,
-      content: 'Ein Report'
-    }
-  }
+  private alreadyReported = false;
+  private content = 'Ein Report';
 
   async created() {
     const reports = await AppStorage.loadReports();
