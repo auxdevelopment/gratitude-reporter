@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <report-editor v-if="!alreadyReported" :buttonText="'Report eingeben'" v-bind:content.sync="content" :submit="clicky"></report-editor>
+    <report-editor
+      v-if="!alreadyReported"
+      :buttonText="'Report eingeben'"
+      v-bind:content.sync="content"
+      :submit="clicky"></report-editor>
     <already-reported v-else></already-reported>
   </div>
 </template>
