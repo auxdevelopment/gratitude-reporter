@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/reports">Reports</router-link> |
-      <router-link to="/#">Export</router-link>
+      <router-link to="/">Journal</router-link> |
+      <router-link to="/reports">Einträge</router-link> |
+      <router-link to="/export">Export</router-link>
     </div>
     <router-view/>
   </div>
@@ -30,7 +30,18 @@ body {
 }
 
 #app .page {
-  padding-top: 10vh;
+  padding-top: 5vh;
+}
+
+#app .page .header {
+  color: #fcdab7;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#app .page .sub-header {
+  color: white;
+  font-size: 20px;
 }
 
 #nav {
@@ -39,13 +50,15 @@ body {
   background-color: #1d2d50;
   border-bottom: 1px solid #fcdab7;
 
+  font-size: 28px;
+
   a {
     font-weight: bold;
     color: #fcdab7;
     text-decoration: none;
 
     &.router-link-exact-active {
-      color: #1e5f74;
+      color: white;
     }
   }
 }

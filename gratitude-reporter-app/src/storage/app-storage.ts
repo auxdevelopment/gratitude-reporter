@@ -27,6 +27,18 @@ export class AppStorage {
         return Promise.resolve();
     }
 
+    public static getParticipantId(): Promise<string> {
+        const stateValue = localStorage.getItem(ROOT_KEY);
+
+         if (!stateValue) {
+            return Promise.reject('state may not be null');
+        }
+
+        const state: State = JSON.parse(stateValue);
+
+        return Promise.resolve(state.userId);
+    }
+
     public static addReport(report: Report): Promise<void> {
         const stateValue = localStorage.getItem(ROOT_KEY);
 
