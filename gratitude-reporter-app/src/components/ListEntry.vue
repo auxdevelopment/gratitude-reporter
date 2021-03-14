@@ -1,7 +1,7 @@
 <template>
     <div class="list-entry">
-        <p>{{ report.content }}</p>
-        <p>{{ report.timestamp }}</p>
+        <div class="metadata">{{ getFormatted() }}</div>
+        <div class="content">{{ report.content }}</div>
     </div>
 </template>
 
@@ -12,11 +12,39 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class ListEntry extends Vue {
     @Prop() report!: Report
+
+    getFormatted() {
+        const date = new Date(this.report.timestamp);
+
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+
+        return `${day}.${month}.${year}`;
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .list-entry {
     border: 2px solid black;
+
+    padding: 18px;
+    padding-top: 12px;
+}
+
+.content {
+    font-size: 24px;
+    text-align: left;
+
+    margin-top: 8px;
+}
+
+.metadata {
+    text-align: left;
+
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline;
 }
 </style>

@@ -10,31 +10,76 @@
 </template>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Shippori+Mincho+B1&display=swap');
+
 body {
   color: white;
-  background-color: rgb(26, 5, 5);
-
+  background-color: #133b5c;
   font-size: 30px;
+
+  margin: 0;
+
+  max-height: 100vh;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Shippori Mincho B1", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
 
+#app .page {
+  padding-top: 10vh;
+}
+
 #nav {
+  margin: 0;
   padding: 30px;
+  background-color: #1d2d50;
+  border-bottom: 1px solid #fcdab7;
 
   a {
     font-weight: bold;
-    color: #364f69;
+    color: #fcdab7;
+    text-decoration: none;
 
     &.router-link-exact-active {
-      color: purple;
+      color: #1e5f74;
     }
   }
+}
+
+button {
+  border: none;
+  color: #fcdab7;
+  border: 1px solid #fcdab7;
+
+  padding: 15px;
+
+  background-color: #1d2d50;
+  font-weight: bold;
+
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: "Shippori Mincho B1", Helvetica, Arial, sans-serif;
+}
+
+textarea {
+  background-color: #d1d1d1;
+  border: none;
+
+  resize: none;
+  padding: 10px;
+
+  width: 80vw;
+  height: 30vh;
+
+  max-width: 800px;
+
+  font-size: 20px;
+
+  font-family: "Shippori Mincho B1", Helvetica, Arial, sans-serif;
 }
 </style>
 

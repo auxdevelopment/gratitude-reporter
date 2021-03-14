@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <input v-bind:value="content" v-on:input="$emit('update:content', $event.target.value)">
+            <textarea v-bind:value="content" v-on:input="$emit('update:content', $event.target.value)"></textarea>
         </div>
         <button v-on:click="submit()">{{ buttonText }}</button>
     </div>

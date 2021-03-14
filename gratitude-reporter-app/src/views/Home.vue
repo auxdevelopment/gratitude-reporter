@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home page">
     <report-editor
-      v-if="!alreadyReported"
+      v-if="alreadyReported"
       :buttonText="'Report eingeben'"
       v-bind:content.sync="content"
       :submit="submit"></report-editor>
