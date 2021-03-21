@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Journal</router-link> |
-      <router-link to="/reports">Einträge</router-link> |
-      <router-link to="/export">Export</router-link>
+        <router-link to="/"> Journal </router-link>
+        <router-link to="/reports"> Einträge </router-link>
+        <router-link to="/export"> Export </router-link>
+      <router-view/>
     </div>
-    <router-view/>
   </div>
 </template>
 
@@ -14,7 +14,7 @@
 
 body {
   color: white;
-  background-color: #133b5c;
+  background-color: #ffffff;
   font-size: 30px;
 
   margin: 0;
@@ -40,15 +40,15 @@ body {
 }
 
 #app .page .sub-header {
-  color: white;
+  color: rgb(245, 163, 96);
   font-size: 20px;
 }
 
 #nav {
   margin: 0;
   padding: 30px;
-  background-color: #1d2d50;
-  border-bottom: 1px solid #fcdab7;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ffffff;
 
   font-size: 28px;
 
@@ -58,19 +58,18 @@ body {
     text-decoration: none;
 
     &.router-link-exact-active {
-      color: white;
+      color: rgb(248, 125, 9);
     }
   }
 }
 
 button {
   border: none;
-  color: #fcdab7;
-  border: 1px solid #fcdab7;
-
+  color: #ffffff;
+  
   padding: 15px;
 
-  background-color: #1d2d50;
+  background-color: #ffbc58;
   font-weight: bold;
 
   margin-top: 10px;
@@ -79,7 +78,7 @@ button {
 }
 
 textarea {
-  background-color: #d1d1d1;
+  background-color: #f8ba7c;
   border: none;
 
   resize: none;

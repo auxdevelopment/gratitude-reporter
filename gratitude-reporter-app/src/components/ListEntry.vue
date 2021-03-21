@@ -27,7 +27,7 @@ export default class ListEntry extends Vue {
 
 <style lang="scss" scoped>
 .list-entry {
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
 
     padding: 18px;
     padding-top: 12px;

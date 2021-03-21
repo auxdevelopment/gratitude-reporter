@@ -6,7 +6,7 @@
             Die eigentlichen Inhalte bleiben privat.
         </div>
 
-        <button @click="sendMail()">Einträge exportieren.</button>
+        <button @click="sendMail()">Einträge exportieren</button>
     </div>
 </template>
 
