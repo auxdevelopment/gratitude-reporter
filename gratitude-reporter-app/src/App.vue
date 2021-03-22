@@ -78,7 +78,7 @@ button {
 }
 
 textarea {
-  background-color: #f8ba7c;
+  background-color: #fcdab7;
   border: none;
 
   resize: none;
