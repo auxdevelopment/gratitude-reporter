@@ -1,5 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home page">
+    <div class="sub-header">Hier kannst du einmal am Tag einen Eintrag verfassen.</div>
+
     <report-editor
       v-if="!alreadyReported"
       :buttonText="'Report eingeben'"
