@@ -14,7 +14,7 @@
 
 body {
   color: white;
-  background-color: #ffffff;
+  background-color: #112a6e;
   font-size: 30px;
 
   margin: 0;
@@ -47,8 +47,8 @@ body {
 #nav {
   margin: 0;
   padding: 30px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ffffff;
+  background-color: #112a6e;
+  border-bottom: 1px solid #112a6e;
 
   font-size: 28px;
 
