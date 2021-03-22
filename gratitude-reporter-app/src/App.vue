@@ -40,7 +40,7 @@ body {
 }
 
 #app .page .sub-header {
-  color: rgb(245, 163, 96);
+  color: rgb(80, 80, 80);
   font-size: 20px;
 }
 
