@@ -16,6 +16,7 @@ import ReportEditor from '@/components/ReportEditor.vue';
 import AlreadyReported from '@/components/AlreadyReported.vue';
 import { AppStorage } from '@/storage/app-storage';
 import { Report } from '@/storage/report';
+import { ToastOptions } from 'vue-toasted';
 
 @Component({
   components: {
@@ -25,6 +26,12 @@ import { Report } from '@/storage/report';
 export default class Home extends Vue {
   private alreadyReported = false;
   private content = '';
+
+  private toastOptions: ToastOptions = {
+    duration: 2 * 1000,
+    position: 'bottom-center',
+    fullWidth: true
+  };
 
   async created() {
     const reports = await AppStorage.loadReports();
@@ -40,6 +47,10 @@ export default class Home extends Vue {
     });
   }
 
+  clearEditor() {
+    this.content = '';
+  }
+
   async submit() {
     const timestamp = Date.now();
     const report: Report = {
@@ -48,7 +59,10 @@ export default class Home extends Vue {
     };
 
     await AppStorage.addReport(report);
-    this.content = '';
+    this.clearEditor();
+
+    const submitToast = this.$toasted.show('Danke für deinen Report!', this.toastOptions);
+    submitToast.goAway(2 * 1000);
   }
 
 }
