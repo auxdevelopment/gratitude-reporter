@@ -31,6 +31,9 @@ body {
 
 #app .page {
   padding-top: 5vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 #app .page .header {
@@ -42,6 +45,12 @@ body {
 #app .page .sub-header {
   color: rgb(255, 255, 255);
   font-size: 20px;
+  
+  margin-bottom: 5vh;
+  text-align: center;
+
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
 
 #nav {
