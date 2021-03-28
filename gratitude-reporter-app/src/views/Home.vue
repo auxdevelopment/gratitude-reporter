@@ -1,13 +1,11 @@
 <template>
   <div class="home page">
-    <div class="sub-header">Hier kannst du einmal am Tag einen Eintrag verfassen.</div>
+    <div class="sub-header">Es gibt vieles in unserem Leben, wofür wir dankbar sein können. Dankbarkeit kann sich auf alles Mögliche beziehen - Erlebnisse, Objekte, Personen, etc. Deinen Gedanken sind keine Grenzen gesetzt! Erinnere dich an den vergangenen Tag und notiere dir, wofür du heute dankbar bist.</div>
 
     <report-editor
-      v-if="!alreadyReported"
       :buttonText="'Report eingeben'"
       v-bind:content.sync="content"
       :submit="submit"></report-editor>
-    <already-reported v-else></already-reported>
 
   </div>
 </template>
@@ -18,6 +16,7 @@ import ReportEditor from '@/components/ReportEditor.vue';
 import AlreadyReported from '@/components/AlreadyReported.vue';
 import { AppStorage } from '@/storage/app-storage';
 import { Report } from '@/storage/report';
+import { ToastOptions } from 'vue-toasted';
 
 @Component({
   components: {
@@ -26,7 +25,13 @@ import { Report } from '@/storage/report';
 })
 export default class Home extends Vue {
   private alreadyReported = false;
-  private content = 'Ein Report';
+  private content = '';
+
+  private toastOptions: ToastOptions = {
+    duration: 2 * 1000,
+    position: 'bottom-center',
+    fullWidth: true
+  };
 
   async created() {
     const reports = await AppStorage.loadReports();
@@ -40,8 +45,10 @@ export default class Home extends Vue {
 
       return reportedToday;
     });
+  }
 
-    this.alreadyReported = !!reportFromToday;
+  clearEditor() {
+    this.content = '';
   }
 
   async submit() {
@@ -52,7 +59,10 @@ export default class Home extends Vue {
     };
 
     await AppStorage.addReport(report);
-    this.alreadyReported = true;
+    this.clearEditor();
+
+    const submitToast = this.$toasted.show('Danke für deinen Report!', this.toastOptions);
+    submitToast.goAway(2 * 1000);
   }
 
 }

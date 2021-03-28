@@ -30,8 +30,8 @@ export default class ReportList extends Vue {
 .report-container {
     display: flex;
     justify-content: center;
-    flex-flow: row;
-    flex-wrap: wrap;
+    flex-flow: row-reverse;
+    flex-wrap: wrap-reverse;
 }
 
 .report-container > * {

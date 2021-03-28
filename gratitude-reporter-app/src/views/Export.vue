@@ -24,7 +24,7 @@ export default class Export extends Vue {
         const participantId = await AppStorage.getParticipantId();
 
         // TODO: add correct receipient
-        const receipient = '';
+        const receipient = 'dankbarkeitsstudie@gmail.com';
         const mailBody = Exporter.generateExport(participantId, reports)
         const encoded = encodeURIComponent(mailBody);
         window.location.href = `mailto:${receipient}?body=${encoded}`;
