@@ -6,6 +6,7 @@
         <router-link to="/export"> Export </router-link>
       <router-view/>
     </div>
+    <div id="icon-copyright">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
   </div>
 </template>
 
@@ -44,8 +45,9 @@ body {
 
 #app .page .sub-header {
   color: rgb(255, 255, 255);
-  font-size: 20px;
-  
+  font-size: 14px;
+  font-weight: bold;
+
   margin-bottom: 5vh;
   text-align: center;
 
@@ -101,6 +103,20 @@ textarea {
   font-size: 20px;
 
   font-family: "Shippori Mincho B1", Helvetica, Arial, sans-serif;
+}
+
+#icon-copyright {
+  font-size: 12px;
+  color: white;
+  font-style: none;
+  text-align: center;
+
+  margin-top: 25vh;
+}
+
+#icon-copyright a {
+  color: white;
+  font-weight: bold;
 }
 </style>
 
