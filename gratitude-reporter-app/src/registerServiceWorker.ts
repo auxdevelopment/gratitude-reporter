@@ -12,6 +12,15 @@ if (process.env.NODE_ENV === 'production') {
     },
     registered () {
       console.log('Service worker has been registered.')
+
+      const button = document.getElementById('notifications');
+        button!.addEventListener('click', () => {
+        Notification.requestPermission().then((result) => {
+          if (result === 'granted') {
+            showNotification();
+          }
+        });
+      })
     },
     cached () {
       console.log('Content has been cached for offline use.')
